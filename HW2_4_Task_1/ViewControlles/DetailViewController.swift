@@ -9,11 +9,14 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    
+    var userName: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        userNameLabel.text = "Welcome, " + userName
     }
     
 
@@ -27,4 +30,7 @@ class DetailViewController: UIViewController {
     }
     */
 
+//    @IBAction func logOutActionButton(_ sender: UIButton) {
+//        dismiss(animated: true)
+//    }
 }

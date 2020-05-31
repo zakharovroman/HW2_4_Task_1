@@ -33,7 +33,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Log In"/>
                                         <connections>
-                                            <segue destination="Tv2-n6-KaN" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="kDx-LU-tHJ"/>
+                                            <action selector="logInActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xLR-H2-3IL"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ipk-hh-3Xa">
@@ -63,6 +63,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="9ol-oM-0Z2" id="4KQ-ft-vzB"/>
+                        <outlet property="userNameTextField" destination="Lsl-i6-gCt" id="2IS-3Z-23g"/>
+                        <segue destination="Tv2-n6-KaN" kind="presentation" identifier="showDetails" modalPresentationStyle="fullScreen" id="o8z-bI-L5F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,7 +100,7 @@
                                             <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="87W-s5-Dg1"/>
+                                            <segue destination="Y3q-eM-KOw" kind="unwind" unwindAction="unwindSegueWithSegue:" id="X4V-cQ-fND"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -109,8 +114,12 @@
                         <viewLayoutGuide key="safeArea" id="nhl-Tf-9KH"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Detail" image="person.crop.circle" catalog="system" id="x9C-Mw-f32"/>
+                    <connections>
+                        <outlet property="userNameLabel" destination="Te7-ml-Iyr" id="WLE-S8-d6A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmd-4w-4l2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Y3q-eM-KOw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1643" y="135"/>
         </scene>
@@ -153,6 +162,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="VGJ-8X-CcK"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LgW-cu-8Mk">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
