@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum NameFields {
-    case userName
-    case password
-    case none
-}
-
 class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userNameTextField: UITextField!
@@ -88,14 +82,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     // MARK: Forgot
     @IBAction func forgotUserNameActionButton(_ sender: UIButton) {
         showAlert(with: "User name", and: "Please enter \"User\"", active: userNameTextField, set: user.userName)
-        //userNameTextField.text = user.userName
-        //setActiveField(as: userNameTextField)
     }
     
     @IBAction func forgotPasswordActionButton(_ sender: UIButton) {
         showAlert(with: "Password", and: "Please enter \"Password\"", active: passwordTextField, set: user.password)
-        //passwordTextField.text = user.password
-        //setActiveField(as: passwordTextField)
     }
     
     // MARK: Navigation
