@@ -31,7 +31,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == userNameTextField {
-            userNameTextField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
             logInActionButton(logInButton)
