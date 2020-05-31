@@ -28,9 +28,13 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //self.view.endEditing(true)
-        userNameTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
+        if textField == userNameTextField {
+            userNameTextField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            // passwordTextField.resignFirstResponder()
+            logInActionButton(logInButton)
+        }
         return false
     }
     
@@ -68,7 +72,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func passwordEditingDidEndTextField(_ sender: UITextField) {
-        logInActionButton(logInButton)
+       // logInActionButton(logInButton)
     }
     
     @IBAction func forgotUserNameActionButton(_ sender: UIButton) {
@@ -106,8 +110,10 @@ extension MainViewController {
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             if clearTextField == .userName {
                 self.userNameTextField.text = ""
+                self.userNameTextField.becomeFirstResponder()
             } else if clearTextField == .password {
                 self.passwordTextField.text = ""
+                self.passwordTextField.becomeFirstResponder()
             }
         }
         alert.addAction(okAction)
