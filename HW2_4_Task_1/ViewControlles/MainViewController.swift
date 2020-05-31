@@ -19,7 +19,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var logInButton: UIButton!
     
     let user = User()
     
@@ -30,50 +29,60 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         userNameTextField.becomeFirstResponder()
     }
     
+    // MARK: Keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == userNameTextField {
             passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
-            logInActionButton(logInButton)
+            logIn()
         }
         return false
     }
     
-    // MARK: Log in
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
     }
     
-    @IBAction func logInActionButton(_ sender: UIButton) {
-        
-        guard let inputTextName = userNameTextField.text, !inputTextName.isEmpty else {
+    // MARK: Log in
+    func checkCredential() -> Bool {
+       guard let inputTextName = userNameTextField.text, !inputTextName.isEmpty else {
             showAlert(with: "User name is empty", and: "Please enter your name", clear: .none)
-            return
+            return false
         }
         if let _ = Double(inputTextName) {
             showAlert(with: "Wrong format in user name", and: "Please enter your name correctly", clear: .userName)
-            return
+            return false
         }
         
         guard inputTextName == user.userName else {
             showAlert(with: "Invalid user name", and: "Please enter user name correctly", clear: .userName)
-            return
+            return false
         }
         
         guard let inputTextPassword = passwordTextField.text, !inputTextPassword.isEmpty else {
             showAlert(with: "Password is empty", and: "Please enter password", clear: .none)
-            return
+            return false
         }
         guard inputTextPassword == user.password else {
             showAlert(with: "Invalid password", and: "Please enter password correctly", clear: .password)
-            return
+            return false
         }
-        
-        let userName = userNameTextField.text
-        performSegue(withIdentifier: "showDetails", sender: userName)
+        return true
     }
     
+    func logIn() {
+        if checkCredential() {
+            let userName = userNameTextField.text
+            performSegue(withIdentifier: "showDetails", sender: userName)
+        }
+    }
+    
+    @IBAction func logInActionButton(_ sender: UIButton) {
+        logIn()
+    }
+    
+    // MARK: Forgot
     @IBAction func forgotUserNameActionButton(_ sender: UIButton) {
         showAlert(with: "User name", and: "Please enter \"User\"", clear: .none)
         userNameTextField.text = user.userName

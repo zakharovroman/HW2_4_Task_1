@@ -33,7 +33,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Log In"/>
                                         <connections>
-                                            <action selector="logInActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xLR-H2-3IL"/>
+                                            <action selector="logInActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rvT-1L-ORY"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ipk-hh-3Xa">
@@ -70,7 +70,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="logInButton" destination="lkv-Mn-j6Q" id="gkG-5f-I04"/>
                         <outlet property="passwordTextField" destination="9ol-oM-0Z2" id="4KQ-ft-vzB"/>
                         <outlet property="userNameTextField" destination="Lsl-i6-gCt" id="2IS-3Z-23g"/>
                         <segue destination="Tv2-n6-KaN" kind="presentation" identifier="showDetails" modalPresentationStyle="fullScreen" id="o8z-bI-L5F"/>
