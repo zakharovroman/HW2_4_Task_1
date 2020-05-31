@@ -12,7 +12,6 @@ enum NameFields {
     case userName
     case password
     case none
-    
 }
 
 class MainViewController: UIViewController, UITextFieldDelegate {
@@ -26,46 +25,50 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         userNameTextField.delegate = self
         passwordTextField.delegate = self
-        userNameTextField.becomeFirstResponder()
+        setActiveField(as: userNameTextField)
     }
     
     // MARK: Keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == userNameTextField {
-            passwordTextField.becomeFirstResponder()
+            setActiveField(as: passwordTextField)
         } else if textField == passwordTextField {
             logIn()
         }
         return false
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        self.view.endEditing(true)
+    func setActiveField(as field: UITextField) {
+        field.becomeFirstResponder()
     }
     
     // MARK: Log in
     func checkCredential() -> Bool {
        guard let inputTextName = userNameTextField.text, !inputTextName.isEmpty else {
-            showAlert(with: "User name is empty", and: "Please enter your name", clear: .none)
+        showAlert(with: "User name is empty", and: "Please enter", active: userNameTextField, set: "")
             return false
         }
         if let _ = Double(inputTextName) {
-            showAlert(with: "Wrong format in user name", and: "Please enter your name correctly", clear: .userName)
+            showAlert(with: "Wrong format user name", and: "Please enter correctly", active: userNameTextField, set: "")
             return false
         }
         
         guard inputTextName == user.userName else {
-            showAlert(with: "Invalid user name", and: "Please enter user name correctly", clear: .userName)
+            showAlert(with: "Invalid user name", and: "Please enter correctly", active: userNameTextField, set: "")
             return false
         }
         
         guard let inputTextPassword = passwordTextField.text, !inputTextPassword.isEmpty else {
-            showAlert(with: "Password is empty", and: "Please enter password", clear: .none)
+            showAlert(with: "Password is empty", and: "Please enter", active: passwordTextField, set: "")
             return false
         }
         guard inputTextPassword == user.password else {
-            showAlert(with: "Invalid password", and: "Please enter password correctly", clear: .password)
+            showAlert(with: "Invalid password", and: "Please enter correctly", active: passwordTextField, set: "")
             return false
         }
         return true
@@ -84,15 +87,15 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Forgot
     @IBAction func forgotUserNameActionButton(_ sender: UIButton) {
-        showAlert(with: "User name", and: "Please enter \"User\"", clear: .none)
-        userNameTextField.text = user.userName
-        userNameTextField.becomeFirstResponder()
+        showAlert(with: "User name", and: "Please enter \"User\"", active: userNameTextField, set: user.userName)
+        //userNameTextField.text = user.userName
+        //setActiveField(as: userNameTextField)
     }
     
     @IBAction func forgotPasswordActionButton(_ sender: UIButton) {
-        showAlert(with: "Password", and: "Please enter \"Password\"", clear: .none)
-        passwordTextField.text = user.password
-        passwordTextField.becomeFirstResponder()
+        showAlert(with: "Password", and: "Please enter \"Password\"", active: passwordTextField, set: user.password)
+        //passwordTextField.text = user.password
+        //setActiveField(as: passwordTextField)
     }
     
     // MARK: Navigation
@@ -108,7 +111,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         if let _ = segue.source as? DetailViewController {
             userNameTextField.text = ""
             passwordTextField.text = ""
-            userNameTextField.becomeFirstResponder()
+            setActiveField(as: userNameTextField)
         }
     }
     
@@ -116,16 +119,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
 
 // MARK: UIAlertController
 extension MainViewController {
-    private func showAlert(with title: String, and message: String, clear clearTextField: NameFields) {
+    private func showAlert(with title: String, and message: String, active textField: UITextField, set value: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            if clearTextField == .userName {
-                self.userNameTextField.text = ""
-                self.userNameTextField.becomeFirstResponder()
-            } else if clearTextField == .password {
-                self.passwordTextField.text = ""
-                self.passwordTextField.becomeFirstResponder()
-            }
+            textField.text = value
+            self.setActiveField(as: textField)
         }
         alert.addAction(okAction)
         present(alert, animated: true)
