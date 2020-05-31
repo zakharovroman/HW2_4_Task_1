@@ -15,17 +15,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rm-si-fEn">
-                                <rect key="frame" x="91" y="266" width="139" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <nil key="textColor"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unnamed" translatesAutoresizingMaskIntoConstraints="NO" id="zdr-ra-yj3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmS-CM-X8z">
+                                <rect key="frame" x="96.5" y="266" width="127" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9rm-si-fEn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Y8G-yI-nCz"/>
-                            <constraint firstItem="9rm-si-fEn" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="gcy-xR-eJl"/>
+                            <constraint firstItem="jmS-CM-X8z" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4Eo-Pc-kCd"/>
+                            <constraint firstItem="zdr-ra-yj3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SEk-cc-abo"/>
+                            <constraint firstItem="jmS-CM-X8z" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="UCz-vd-P0J"/>
+                            <constraint firstItem="zdr-ra-yj3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jtB-UP-hT1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zdr-ra-yj3" secondAttribute="bottom" id="mtV-kG-QT3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zdr-ra-yj3" secondAttribute="trailing" id="t6A-yD-V6q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -35,4 +42,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="unnamed" width="170.5" height="256"/>
+    </resources>
 </document>
