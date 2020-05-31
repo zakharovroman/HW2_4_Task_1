@@ -74,18 +74,16 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         performSegue(withIdentifier: "showDetails", sender: userName)
     }
     
-    @IBAction func passwordEditingDidEndTextField(_ sender: UITextField) {
-       // logInActionButton(logInButton)
-    }
-    
     @IBAction func forgotUserNameActionButton(_ sender: UIButton) {
         showAlert(with: "User name", and: "Please enter \"User\"", clear: .none)
         userNameTextField.text = user.userName
+        userNameTextField.becomeFirstResponder()
     }
     
     @IBAction func forgotPasswordActionButton(_ sender: UIButton) {
         showAlert(with: "Password", and: "Please enter \"Password\"", clear: .none)
         passwordTextField.text = user.password
+        passwordTextField.becomeFirstResponder()
     }
     
     // MARK: Navigation
@@ -101,6 +99,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         if let _ = segue.source as? DetailViewController {
             userNameTextField.text = ""
             passwordTextField.text = ""
+            userNameTextField.becomeFirstResponder()
         }
     }
     

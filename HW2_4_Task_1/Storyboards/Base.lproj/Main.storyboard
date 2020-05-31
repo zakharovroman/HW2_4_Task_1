@@ -27,9 +27,6 @@
                                         <rect key="frame" x="0.0" y="46" width="212" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
-                                        <connections>
-                                            <action selector="passwordEditingDidEndTextField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="oMC-sR-QEa"/>
-                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkv-Mn-j6Q">
                                         <rect key="frame" x="0.0" y="92" width="212" height="36"/>
@@ -144,7 +141,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WmH-LO-Ln4">
                                 <rect key="frame" x="16" y="20" width="288" height="479"/>
                                 <color key="backgroundColor" red="0.99656373259999997" green="0.67700958249999998" blue="0.1212158278" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <string key="text">My name is Roman. I graduated from high school in 1988. He entered the Moscow Engineering Physics Institute. Then he studied at the Moscow Industrial University and the Moscow Polytechnic University. I worked in 1C franchisees. Then I worked in a construction holding. Now I work in a bakery holding as a program development manager.</string>
+                                <string key="text">My name is Roman. I graduated from high school in 1998 He entered the Moscow Engineering Physics Institute. Then he studied at the Moscow Industrial University and the Moscow Polytechnic University. I worked in 1C franchisees. Then I worked in a construction holding. Now I work in a bakery holding as a program development manager.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
