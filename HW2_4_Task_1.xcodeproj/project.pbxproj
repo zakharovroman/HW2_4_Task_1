@@ -14,6 +14,8 @@
 		305A28942483A82E00D3B395 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305A28932483A82E00D3B395 /* Assets.xcassets */; };
 		305A28972483A82E00D3B395 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305A28952483A82E00D3B395 /* LaunchScreen.storyboard */; };
 		305A28A12483AAB700D3B395 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A28A02483AAB700D3B395 /* User.swift */; };
+		305A28A72483BB7100D3B395 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A28A62483BB7100D3B395 /* DetailViewController.swift */; };
+		305A28A92483BEC900D3B395 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A28A82483BEC900D3B395 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		305A28962483A82E00D3B395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		305A28982483A82E00D3B395 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		305A28A02483AAB700D3B395 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		305A28A62483BB7100D3B395 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		305A28A82483BEC900D3B395 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				305A288E2483A82D00D3B395 /* MainViewController.swift */,
+				305A28A62483BB7100D3B395 /* DetailViewController.swift */,
+				305A28A82483BEC900D3B395 /* InfoViewController.swift */,
 			);
 			path = ViewControlles;
 			sourceTree = "<group>";
@@ -183,7 +189,9 @@
 			files = (
 				305A28A12483AAB700D3B395 /* User.swift in Sources */,
 				305A288F2483A82D00D3B395 /* MainViewController.swift in Sources */,
+				305A28A72483BB7100D3B395 /* DetailViewController.swift in Sources */,
 				305A288B2483A82D00D3B395 /* AppDelegate.swift in Sources */,
+				305A28A92483BEC900D3B395 /* InfoViewController.swift in Sources */,
 				305A288D2483A82D00D3B395 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
