@@ -8,13 +8,63 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+enum NameFields {
+    case userName
+    case password
+    case none
+    
+}
 
+class MainViewController: UIViewController {
+    
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    // MARK: Log in
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func logInActionButton(_ sender: UIButton) {
+        guard let inputTextName = userNameTextField.text, !inputTextName.isEmpty else {
+            showAlert(with: "User name is empty", and: "Please enter your name", clear: .none)
+            return
+        }
+        if let _ = Double(inputTextName) {
+            showAlert(with: "Wrong format in user name", and: "Please enter your name correctly", clear: .userName)
+            return
+        }
+        guard inputTextName == "User" else {
+            showAlert(with: "Invalid user name", and: "Please enter user name correctly", clear: .userName)
+            return
+        }
+        
+        guard let inputTextPassword = passwordTextField.text, !inputTextPassword.isEmpty else {
+            showAlert(with: "Password is empty", and: "Please enter password", clear: .none)
+            return
+        }
+        guard inputTextPassword == "Password" else {
+            showAlert(with: "Invalid password", and: "Please enter password correctly", clear: .password)
+            return
+        }
+        
+        let userName = userNameTextField.text
+        performSegue(withIdentifier: "showDetails", sender: userName)
+    }
+    
+    @IBAction func forgotUserNameActionButton(_ sender: UIButton) {
+        showAlert(with: "User name", and: "Please enter \"User\"", clear: .none)
+        userNameTextField.text = "User"
+    }
+    
+    @IBAction func forgotPasswordActionButton(_ sender: UIButton) {
+        showAlert(with: "Password", and: "Please enter \"Password\"", clear: .none)
+        passwordTextField.text = "Password"
     }
     
     // MARK: Navigation
@@ -26,20 +76,29 @@ class MainViewController: UIViewController {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super .touchesBegan(touches, with: event) }
-    
-    @IBAction func logInActionButton(_ sender: UIButton) {
-        let userName = userNameTextField.text
-        performSegue(withIdentifier: "showDetails", sender: userName)
-    }
-    
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
         if let _ = segue.source as? DetailViewController {
             userNameTextField.text = ""
             passwordTextField.text = ""
         }
-        
+    }
+    
+}
+
+// MARK: UIAlertController
+extension MainViewController {
+    private func showAlert(with title: String, and message: String, clear clearTextField: NameFields) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            if clearTextField == .userName {
+                self.userNameTextField.text = ""
+            } else if clearTextField == .password {
+                self.passwordTextField.text = ""
+            }
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
+
 
