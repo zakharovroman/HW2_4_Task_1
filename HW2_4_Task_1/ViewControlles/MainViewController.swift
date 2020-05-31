@@ -15,13 +15,23 @@ enum NameFields {
     
 }
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var logInButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userNameTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //self.view.endEditing(true)
+        userNameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        return false
     }
     
     // MARK: Log in
@@ -55,6 +65,10 @@ class MainViewController: UIViewController {
         
         let userName = userNameTextField.text
         performSegue(withIdentifier: "showDetails", sender: userName)
+    }
+    
+    @IBAction func passwordEditingDidEndTextField(_ sender: UITextField) {
+        logInActionButton(logInButton)
     }
     
     @IBAction func forgotUserNameActionButton(_ sender: UIButton) {
