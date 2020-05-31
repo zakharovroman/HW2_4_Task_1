@@ -21,6 +21,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     
+    let user = User()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         userNameTextField.delegate = self
@@ -32,7 +34,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             userNameTextField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
-            // passwordTextField.resignFirstResponder()
             logInActionButton(logInButton)
         }
         return false
@@ -45,6 +46,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func logInActionButton(_ sender: UIButton) {
+        
         guard let inputTextName = userNameTextField.text, !inputTextName.isEmpty else {
             showAlert(with: "User name is empty", and: "Please enter your name", clear: .none)
             return
@@ -53,7 +55,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             showAlert(with: "Wrong format in user name", and: "Please enter your name correctly", clear: .userName)
             return
         }
-        guard inputTextName == "User" else {
+        
+        guard inputTextName == user.userName else {
             showAlert(with: "Invalid user name", and: "Please enter user name correctly", clear: .userName)
             return
         }
@@ -62,7 +65,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             showAlert(with: "Password is empty", and: "Please enter password", clear: .none)
             return
         }
-        guard inputTextPassword == "Password" else {
+        guard inputTextPassword == user.password else {
             showAlert(with: "Invalid password", and: "Please enter password correctly", clear: .password)
             return
         }
@@ -77,12 +80,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func forgotUserNameActionButton(_ sender: UIButton) {
         showAlert(with: "User name", and: "Please enter \"User\"", clear: .none)
-        userNameTextField.text = "User"
+        userNameTextField.text = user.userName
     }
     
     @IBAction func forgotPasswordActionButton(_ sender: UIButton) {
         showAlert(with: "Password", and: "Please enter \"Password\"", clear: .none)
-        passwordTextField.text = "Password"
+        passwordTextField.text = user.password
     }
     
     // MARK: Navigation

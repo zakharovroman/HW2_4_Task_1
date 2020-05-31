@@ -7,6 +7,10 @@
 //
 
 struct User {
-    let userName: String
-    let password: String
+    var userName: String {
+        return "User"
+    }
+    var password: String {
+        return "Password"
+    }
 }
