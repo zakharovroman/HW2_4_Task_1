@@ -15,3 +15,13 @@ class InfoViewController: UIViewController {
     }
     
 }
+
+//class InfoViewController: UIViewController {
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//    }
+//
+//}
+//
+//Не нужно создавать классы-пустышки. Если в классе нет ни чего, то и класс тебе не нужен. Просто вью контроллер будет ассоциирован с типом UIViewController
