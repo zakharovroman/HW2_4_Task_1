@@ -25,7 +25,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     // MARK: Keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        self.view.endEditing(true)
+        view.endEditing(true)
+        
+//      self.view.endEditing(true)
+//
+//        Ключевое слово self тут лишнее. Ты ведь обращаешься к свойству класса не из блока замыкания, поэтому явно указывать на то, что это свойство класса не нужно. Понять в каком месте нужно явно использовать self очень просто: везде пиши без self, а там где это надо, компилятор тебе сообщит. Это бывает в блоках замыканий, как я уже сказал и в том случае, когда параметр метода совпадает с названием свойства класса.
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -43,6 +47,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Log in
     func checkCredential() -> Bool {
+        //check name
         guard let inputTextName = userNameTextField.text, !inputTextName.isEmpty else {
             showAlert(with: "User name is empty", and: "Please enter 🖋", active: userNameTextField, set: "")
             return false
@@ -51,12 +56,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             showAlert(with: "Wrong format user name", and: "Please enter correctly ✒️", active: userNameTextField, set: "")
             return false
         }
-        
         guard inputTextName == user.userName else {
             showAlert(with: "Invalid user name", and: "Please enter correctly ✒️", active: userNameTextField, set: "")
             return false
         }
-        
+        //check password
         guard let inputTextPassword = passwordTextField.text, !inputTextPassword.isEmpty else {
             showAlert(with: "Password is empty", and: "Please enter 🔏", active: passwordTextField, set: "")
             return false
@@ -70,8 +74,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     func logIn() {
         if checkCredential() {
-            let userName = userNameTextField.text
-            performSegue(withIdentifier: "showDetails", sender: userName)
+            performSegue(withIdentifier: "showDetails", sender: userNameTextField.text)
         }
     }
     
@@ -98,11 +101,20 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
-        if let _ = segue.source as? DetailViewController {
-            userNameTextField.text = ""
-            passwordTextField.text = ""
-            setActiveField(as: userNameTextField)
-        }
+//        if let _ = segue.source as? DetailViewController {
+//            userNameTextField.text = ""
+//            passwordTextField.text = ""
+//            setActiveField(as: userNameTextField)
+//        }
+        
+//        if let _ = segue.source as? DetailViewController
+//
+//        Эта строка лишняя. У тебя ведь есть только одно место в приложение, от куда ты можешь сделать логаут и это место WelcomeViewController. Да даже если бы было не одно это все равно не имеет значения. Не важно с какого вью контроллера ты возвращаешься, тебе нужно просто отчистить текстовые поля.
+
+        userNameTextField.text = ""
+        passwordTextField.text = ""
+        setActiveField(as: userNameTextField)
+        
     }
     
 }
